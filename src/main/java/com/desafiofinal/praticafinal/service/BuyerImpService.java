@@ -48,15 +48,27 @@ public class BuyerImpService implements IBuyerService{
     @Override
     public List<Buyer> leveUpFidelity() {
 
-        List<Fidelity> fidelityClasses = fidelityRepo.findAll();
         List<Buyer> buyerList = buyerRepo.findAll();
-        List<Buyer> response = new ArrayList<>();
-        Fidelity tempFidelity = null;
-        int change = 0;
+        List<Buyer> response = null;
 
         if(buyerList.isEmpty()){
             throw new ElementNotFoundException("Nenhum comprador encontrado");
         }
+
+        response = getUpdatedFidelityList(buyerList);
+
+        for (Buyer responseBuyer : response){
+            buyerRepo.save(responseBuyer);
+        }
+
+        return response;
+    }
+
+    private List<Buyer> getUpdatedFidelityList(List<Buyer> buyerList) {
+        List<Fidelity> fidelityClasses = fidelityRepo.findAll();
+        List<Buyer> response = new ArrayList<>();
+        Fidelity tempFidelity = null;
+        int change = 0;
 
         for (Buyer buyer : buyerList)
         {
@@ -68,18 +80,13 @@ public class BuyerImpService implements IBuyerService{
                     change++;
                 }
             }
-            if (!response.contains(buyer) && change!=0)
+            if (!response.contains(buyer) && change !=0)
             {
                 buyer.setFidelity(tempFidelity);
                 response.add(buyer);
                 change =0;
             }
         }
-
-        for (Buyer responseBuyer : response){
-            buyerRepo.save(responseBuyer);
-        }
-
         return response;
     }
 }

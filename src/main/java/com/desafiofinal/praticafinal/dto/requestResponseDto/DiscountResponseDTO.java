@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class DiscountResponseDTO {
 
-    private double discountedPrice;
     private double realPrice;
+    private double discountedPrice;
+
 }
