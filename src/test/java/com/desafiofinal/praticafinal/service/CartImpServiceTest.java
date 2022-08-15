@@ -60,7 +60,7 @@ class CartImpServiceTest {
                 .thenReturn(Optional.ofNullable(TestUtilsGenerator.getBuyer()));
         BDDMockito.when(batchStockRepo.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(Optional.ofNullable(TestUtilsGenerator.getBatchStockAndSectorWithCapacity()));
-
+        //TODO adicionar o mock e o generator do Fidelity
         Cart newCart = TestUtilsGenerator.getNewCartOpen();
         Double totalPrice = cartService.createPurchase(newCart);
 
@@ -75,7 +75,7 @@ class CartImpServiceTest {
                 .thenReturn(Optional.ofNullable(TestUtilsGenerator.getCartFinished()));
         BDDMockito.when(batchStockRepo.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(Optional.ofNullable(TestUtilsGenerator.getBatchStockAndSectorWithCapacity()));
-
+        //TODO adicionar o mock e o generator do Fidelity
         Cart newCart = TestUtilsGenerator.getNewCartOpen();
 
         Assertions.assertThatThrownBy(()
@@ -90,7 +90,7 @@ class CartImpServiceTest {
                 .thenReturn(Optional.ofNullable(TestUtilsGenerator.getCartFinished()));
         BDDMockito.when(buyerRepo.findById(ArgumentMatchers.anyLong()))
                 .thenReturn(Optional.ofNullable(TestUtilsGenerator.getBuyer()));
-
+        //TODO adicionar o mock e o generator do Fidelity
         Cart newCart = TestUtilsGenerator.getNewCartOpen();
 
         Assertions.assertThatThrownBy(()
@@ -127,7 +127,7 @@ class CartImpServiceTest {
 
         Cart foundCart = TestUtilsGenerator.getCartOpen();
         String finishedCart = cartService.updateStatus(foundCart.getCartId());
-
+        //TODO adicionar o mock e o generator do Fidelity
         assertThat(finishedCart).isEqualTo("Order completed successfully");
     }
 

@@ -35,12 +35,20 @@ public class CartImpService implements ICartService {
     @Autowired
     private ISectorRepo sectorRepo;
 
+    @Autowired
+    private FidelityRepo fidelityRepo;
+
     @Transactional
     @Override
     public Double createPurchase(Cart cart){
 
+        Fidelity fidelity = verifyFidelity(cart.getBuyer());
+
         Buyer foundBuyer = verifyBuyer(cart.getBuyer());
+        foundBuyer.setFidelity(fidelity);
+
         cart.setBuyer(foundBuyer);
+
 
         List<Purchase> foundPurchaseList = verifyCartBatchStock(cart.getListPurchase(), cart);
         cart.setListPurchase(foundPurchaseList);
@@ -53,6 +61,14 @@ public class CartImpService implements ICartService {
         purchaseRepo.saveAll(cart.getListPurchase());
 
         return totalPrice;
+    }
+
+    private Fidelity verifyFidelity(Buyer foundBuyer) {
+        Optional<Fidelity> fidelity = fidelityRepo.findById(foundBuyer.getFidelity().getFidelityId());
+        if (fidelity.isEmpty()){
+            throw new ElementNotFoundException("Essa Fidelidade não existe");
+        }
+        return fidelity.get();
     }
 
     @Override

@@ -34,10 +34,10 @@ public class FidelityDTO {
     public static Fidelity convertToEntity (FidelityDTO dto){
         return Fidelity.builder()
                 .fidelityId(dto.getFidelityId())
-                .freeShipping(dto.isFreeShipping())
-                .fidelityClass(dto.getFidelityClass())
-                .discount(dto.discount)
-                .levelUpThreshold(dto.getLevelUpThreshold())
+                //.freeShipping(dto.isFreeShipping())
+                //.fidelityClass(dto.getFidelityClass())
+                //.discount(dto.discount)
+                //.levelUpThreshold(dto.getLevelUpThreshold())
                 .build();
     }
 

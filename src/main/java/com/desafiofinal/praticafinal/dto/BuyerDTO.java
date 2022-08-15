@@ -1,6 +1,7 @@
 package com.desafiofinal.praticafinal.dto;
 
 import com.desafiofinal.praticafinal.model.Buyer;
+import com.desafiofinal.praticafinal.model.Fidelity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,11 +29,13 @@ public class BuyerDTO {
     }
 
     public static Buyer convertToEntity (BuyerDTO dto){
+
+        Fidelity newFidelity = FidelityDTO.convertToEntity(dto.getFidelity());
         return Buyer.builder()
-                .buyerName(dto.getBuyerName())
+                //.buyerName(dto.getBuyerName())
                 .buyerId(dto.getBuyerId())
-                .fidelity(FidelityDTO.convertToEntity(dto.getFidelity()))
-                .score(dto.getScore())
+                .fidelity(newFidelity)
+                //.score(dto.getScore())
                 .build();
     }
 

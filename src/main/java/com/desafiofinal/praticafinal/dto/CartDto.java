@@ -53,8 +53,8 @@ public class CartDto {
                 .cartId(cartDto.getCartId())
                 .buyer(newBuyer)
                 .date(cartDto.getDate())
-                .totalPrice(cartDto.getTotalPrice())
-                .discountedPrice(cartDto.getDiscountedPrice())
+                //.totalPrice(cartDto.getTotalPrice())
+                //.discountedPrice(cartDto.getDiscountedPrice())
                 .orderStatus(cartDto.getOrderStatus())
                 .listPurchase(newPurchase)
                 .build();
