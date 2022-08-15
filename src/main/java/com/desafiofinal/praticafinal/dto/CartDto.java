@@ -27,6 +27,7 @@ public class CartDto {
     private BuyerDTO buyer;
 
     private Double totalPrice;
+    private Double discountedPrice;
 
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     @NotNull(message = "Date cannot be null. Format: yyyy/MM/dd")
@@ -41,6 +42,7 @@ public class CartDto {
         this.cartId=cart.getCartId();
         this.buyer = new BuyerDTO(cart.getBuyer());
         this.totalPrice=cart.getTotalPrice();
+        this.discountedPrice = cart.getDiscountedPrice();
     }
 
     public static Cart convertDtoToCart (CartDto cartDto){
@@ -51,6 +53,8 @@ public class CartDto {
                 .cartId(cartDto.getCartId())
                 .buyer(newBuyer)
                 .date(cartDto.getDate())
+                .totalPrice(cartDto.getTotalPrice())
+                .discountedPrice(cartDto.getDiscountedPrice())
                 .orderStatus(cartDto.getOrderStatus())
                 .listPurchase(newPurchase)
                 .build();

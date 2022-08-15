@@ -48,6 +48,7 @@ public class CartImpService implements ICartService {
         double totalPrice = getTotalPrice(cart);
         cart.setOrderStatus("Open");
         cart.setTotalPrice(totalPrice);
+        cart.setDiscountedPrice(0);
         cartRepo.save(cart);
         purchaseRepo.saveAll(cart.getListPurchase());
 
@@ -73,8 +74,8 @@ public class CartImpService implements ICartService {
     public String updateStatus(long purchaseId){
         Optional<Cart> foundCart = verifyIfCartExists(purchaseId);
         foundCart.get().setOrderStatus("Finished");
-
         cartRepo.save(foundCart.get());
+
 
         return "Compra finalizada com sucesso";
     }
@@ -83,7 +84,6 @@ public class CartImpService implements ICartService {
     public DiscountResponseDTO updateDiscountStatus(long purchaseId){
         Optional<Cart> foundCart = verifyIfCartExists(purchaseId);
         foundCart.get().setOrderStatus("Finished");
-        cartRepo.save(foundCart.get());
 
         DiscountResponseDTO discountResponse = new DiscountResponseDTO();
         double price = getTotalPrice(foundCart.get());
@@ -96,6 +96,9 @@ public class CartImpService implements ICartService {
         double currentScore = foundBuyer.getScore();
         foundBuyer.setScore(price*0.5 + currentScore);
 
+        foundCart.get().setDiscountedPrice(discountedPrice);
+
+        cartRepo.save(foundCart.get());
         buyerRepo.save(foundBuyer);
 
         return discountResponse;

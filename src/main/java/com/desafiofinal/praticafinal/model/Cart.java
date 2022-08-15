@@ -25,6 +25,8 @@ public class Cart {
 
     private double totalPrice;
 
+    private double discountedPrice;
+
     private LocalDate date;
 
     private String orderStatus;
