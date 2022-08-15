@@ -1,6 +1,7 @@
 package com.desafiofinal.praticafinal.controller;
 
 import com.desafiofinal.praticafinal.dto.CartDto;
+import com.desafiofinal.praticafinal.dto.requestResponseDto.DiscountResponseDTO;
 import com.desafiofinal.praticafinal.model.BatchStock;
 import com.desafiofinal.praticafinal.dto.requestResponseDto.BatchStockResponseDTO;
 import com.desafiofinal.praticafinal.model.Cart;
@@ -64,6 +65,12 @@ public class CartController {
     @PutMapping("/update/{purchaseId}")
     ResponseEntity<String> updateStatus (@PathVariable long purchaseId) throws Exception {
         String responseCart = service.updateStatus(purchaseId);
+        return new ResponseEntity<>(responseCart, HttpStatus.CREATED); //TODO cartBatchStock não pode ter dois batchStocks iguais -> Pde sim, o prof ja falou!
+    }
+
+    @PutMapping("/updateDiscount/{purchaseId}")
+    ResponseEntity<DiscountResponseDTO> updateDiscountStatus (@PathVariable long purchaseId) throws Exception {
+        DiscountResponseDTO responseCart = service.updateDiscountStatus(purchaseId);
         return new ResponseEntity<>(responseCart, HttpStatus.CREATED); //TODO cartBatchStock não pode ter dois batchStocks iguais -> Pde sim, o prof ja falou!
     }
 }

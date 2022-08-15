@@ -1,5 +1,6 @@
 package com.desafiofinal.praticafinal.service;
 
+import com.desafiofinal.praticafinal.dto.requestResponseDto.DiscountResponseDTO;
 import com.desafiofinal.praticafinal.exception.ElementAlreadyExistsException;
 import com.desafiofinal.praticafinal.exception.ElementNotFoundException;
 import com.desafiofinal.praticafinal.exception.ExceededCapacityException;
@@ -72,9 +73,35 @@ public class CartImpService implements ICartService {
     public String updateStatus(long purchaseId){
         Optional<Cart> foundCart = verifyIfCartExists(purchaseId);
         foundCart.get().setOrderStatus("Finished");
+
         cartRepo.save(foundCart.get());
-        return "Order completed successfully";
+
+        return "Compra finalizada com sucesso";
     }
+
+    @Override
+    public DiscountResponseDTO updateDiscountStatus(long purchaseId){
+        Optional<Cart> foundCart = verifyIfCartExists(purchaseId);
+        foundCart.get().setOrderStatus("Finished");
+        cartRepo.save(foundCart.get());
+
+        DiscountResponseDTO discountResponse = new DiscountResponseDTO();
+        double price = getTotalPrice(foundCart.get());
+        Buyer foundBuyer = foundCart.get().getBuyer();
+        double discountedPrice = (1 - foundBuyer.getFidelity().getDiscount())*price;
+
+        discountResponse.setRealPrice(price);
+        discountResponse.setDiscountedPrice(discountedPrice);
+
+        double currentScore = foundBuyer.getScore();
+        foundBuyer.setScore(price*0.5 + currentScore);
+
+        buyerRepo.save(foundBuyer);
+
+        return discountResponse;
+    }
+
+
 
     private double getTotalPrice(Cart cart) {
         double totalPrice = 0d;

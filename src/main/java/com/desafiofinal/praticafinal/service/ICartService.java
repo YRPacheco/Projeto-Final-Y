@@ -1,5 +1,6 @@
 package com.desafiofinal.praticafinal.service;
 
+import com.desafiofinal.praticafinal.dto.requestResponseDto.DiscountResponseDTO;
 import com.desafiofinal.praticafinal.model.BatchStock;
 import com.desafiofinal.praticafinal.model.Cart;
 
@@ -11,4 +12,5 @@ public interface ICartService {
     List<BatchStock> getProducts(long purchaseId);
 
     String updateStatus(long purchaseId);
+    DiscountResponseDTO updateDiscountStatus(long purchaseId);
 }
