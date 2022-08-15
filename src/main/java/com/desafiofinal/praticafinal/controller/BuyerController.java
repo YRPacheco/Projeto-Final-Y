@@ -33,4 +33,11 @@ public class BuyerController {
         return new ResponseEntity<>(responseDTO,HttpStatus.ACCEPTED);
     }
 
+    @GetMapping("/levelUp")
+    ResponseEntity<List<BuyerDTO>> levelUpFidelity(){
+        List<Buyer> response = service.leveUpFidelity();
+        List<BuyerDTO> responseDTO = BuyerDTO.convertListToDTO(response);
+        return new ResponseEntity<>(responseDTO, HttpStatus.ACCEPTED);
+    }
+
 }
