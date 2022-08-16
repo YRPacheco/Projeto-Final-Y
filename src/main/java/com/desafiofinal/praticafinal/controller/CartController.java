@@ -68,6 +68,14 @@ public class CartController {
         return new ResponseEntity<>(responseCart, HttpStatus.CREATED); //TODO cartBatchStock não pode ter dois batchStocks iguais -> Pde sim, o prof ja falou!
     }
 
+
+    /**
+     * This Route sets the provided cart as finished and subtracts the quantities from the specific batchStock.
+     * it also adds the discounted total price according to the Fidelity discount and increases the Buyer score;
+     * @param purchaseId A long number
+     * @return HTML Response 202: Accepted
+     * @throws Exception
+     */
     @PutMapping("/updateDiscount/{purchaseId}")
     ResponseEntity<DiscountResponseDTO> updateDiscountStatus (@PathVariable long purchaseId) throws Exception {
         DiscountResponseDTO responseCart = service.updateDiscountStatus(purchaseId);
