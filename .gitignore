@@ -36,5 +36,5 @@ pom.xml
 .env
 .env-example
 
-
-/src/main/resources/application.properties
+../src/main/resources/
+src/main/resources
