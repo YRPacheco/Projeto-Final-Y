@@ -1,4 +1,4 @@
-## Requisito 6 individual: (Yago)
+## Requisito 6 individual: Yago
 
 Neste requisito escolhi adicionar um sistema de fidelidade, de forma que as classes de fidelidades pudessem ser inseridas e atualizadas de maneira dinamica através de um endpoint.
 
@@ -33,8 +33,8 @@ Por fim ao finalizar uma compra um endpoint para oferecer um desconto ao usuári
 
 |  HTTP  | URL MODEL                                | DESCRIPTION                                                                     |    US-CODE     |
 |:------:|:-----------------------------------------|:--------------------------------------------------------------------------------|:--------------:|
-| `POST` | /api/v1/fresh-products/fidelity/insert   | This route insert a new Buyer                                                   | ml-fidelity-06 |
-| `GET`  | /api/v1/fresh-products/fidelity/listAll  | This route returns a list of all created Buyers                                 | ml-fidelity-06 |
+| `POST` | /api/v1/fresh-products/buyer/insert   | This route insert a new Buyer                                                   | ml-fidelity-06 |
+| `GET`  | /api/v1/fresh-products/buyer/listAll  | This route returns a list of all created Buyers                                 | ml-fidelity-06 |
 | `PUT`  | /api/v1/fresh-products/buyer/levelUp     | This route updates all buyers that reached a threshold for the next avaiable Fidelity level          | ml-e-wallet-06 |
 
 
@@ -50,6 +50,7 @@ Por fim ao finalizar uma compra um endpoint para oferecer um desconto ao usuári
 ### <center>⚗️ Cobertura de testes ⚗️ </center>
 <center> - Faltou tempo para aplicar os testes no requisito individual </center>
 
+###Modelo de EER do requisito
 ![alt text](https://cdn.discordapp.com/attachments/994271189616840765/1009238930375315576/scriptRequisitoYago.png)
 <br>
 <br>
