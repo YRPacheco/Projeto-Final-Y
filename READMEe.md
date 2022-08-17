@@ -49,6 +49,11 @@ Por fim ao finalizar uma compra um endpoint para oferecer um desconto ao usuári
 
 ### <center>⚗️ Cobertura de testes ⚗️ </center>
 <center> - Faltou tempo para aplicar os testes no requisito individual </center>
+<br>
+<br>
+
+###<center>Anexos </center>
+[Rotas do Postman](https://www.getpostman.com/collections/3fdb0720a8daa648e47a)
 
 ###Modelo de EER do requisito
 ![alt text](https://cdn.discordapp.com/attachments/994271189616840765/1009238930375315576/scriptRequisitoYago.png)

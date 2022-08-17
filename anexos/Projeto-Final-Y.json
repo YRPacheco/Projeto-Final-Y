@@ -1,0 +1,329 @@
+{
+	"info": {
+		"_postman_id": "62a9c6ec-b1b1-4223-bd33-e79480ed4c1a",
+		"name": "projetoIntegradorFinal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21825633"
+	},
+	"item": [
+		{
+			"name": "updateInBoundOrder",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderId\": 1,\n    \"dateTime\": \"2000-03-28\", \n    \"sector\": {\n      \"sectorId\":1\n      }, \n    \"batchStock\":[\n    {   \n        \"batchNumber\": 1,\n        \"product\":{\n            \"id\": 2\n        }, \n        \"currentTemperature\": 1.0,\n        \"minimumTemperature\": 1.0,\n        \"initialQuantity\": 4,\n        \"currentQuantity\": 1,\n        \"manufacturingDate\": \"2007-10-22\",\n        \"manufacturingTime\": \"2000-12-22\",\n        \"dueDate\": \"2023-10-22\"\n        },\n        {   \n        \"batchNumber\":2,\n         \"product\":{\n            \"id\": 2\n        }, \n        \"currentTemperature\": 4.0,\n        \"minimumTemperature\": 1.0,\n        \"initialQuantity\": 10,\n        \"currentQuantity\": 2,\n        \"manufacturingDate\": \"2000-09-22\",\n        \"manufacturingTime\": \"2000-10-22\",\n        \"dueDate\": \"2023-04-22\"\n    }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/inboundorder/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"inboundorder",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertInboundOrder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \n    \"dateTime\": \"2000-02-22\", \n    \"sector\": {\n      \"sectorId\":1\n      }, \n    \"batchStock\":[\n    {\n        \"product\":{\n            \"id\": 2\n            },\n        \"currentTemperature\": 1,\n        \"minimumTemperature\": 0,\n        \"initialQuantity\": 3,\n        \"currentQuantity\": 3,\n        \"manufacturingDate\": \"2000-02-22\",\n        \"manufacturingTime\": \"2000-02-22\",\n        \"dueDate\": \"2023-02-22\"\n        },\n        {   \n        \"product\":{\n            \"id\": 2\n            },\n        \"currentTemperature\": 2.0,\n        \"minimumTemperature\": 2.0,\n        \"initialQuantity\": 2,\n        \"currentQuantity\": 2,\n        \"manufacturingDate\": \"2000-02-22\",\n        \"manufacturingTime\": \"2000-02-22\",\n        \"dueDate\": \"2023-02-22\"\n    }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/inboundorder/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"inboundorder",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertPurchase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2000-02-22\", \n    \"buyer\":{\n        \"buyerId\": 1\n    }, \n    \"purchaseList\":[{\n        \"pricePerProduct\": 2,\n        \"productQuantity\":10,\n        \"batchStock\": {\n            \"batchNumber\": 1\n        }\n     },\n     {\n        \"pricePerProduct\": 2,\n        \"productQuantity\":30,\n        \"batchStock\": {\n            \"batchNumber\": 2\n        }\n     }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/purchases/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"purchases",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getProductCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/product/FF",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"product",
+						"FF"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertFidelity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"freeShipping\": false,\n    \"fidelityClass\": \"Nivel 2\",\n    \"discount\": 5.0\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/fidelity/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"fidelity",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertFidelity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"freeShipping\" : false,\n    \"fidelityClass\" : \"Nivel 10\",\n    \"discount\" : 0.5,\n    \"levelUpThreshold\": 20000\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/fidelity/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"fidelity",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllFidelity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/fidelity/listAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"fidelity",
+						"listAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertBuyer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"buyerName\": \"Mauri\",\n    \"fidelity\":{\n        \"fidelityId\": 3\n\n    },\n    \"score\": 0\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/buyer/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"buyer",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllBuyer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/fidelity/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"fidelity",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "levelUpAllBuyer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/buyer/levelUp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"buyer",
+						"levelUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePurchase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2000-02-22\", \n    \"buyer\":{\n        \"buyerId\": 1\n    }, \n    \"purchaseList\":[{\n        \"pricePerProduct\": 2,\n        \"productQuantity\":10,\n        \"batchStock\": {\n            \"batchNumber\": 1\n        }\n     },\n     {\n        \"pricePerProduct\": 2,\n        \"productQuantity\":30,\n        \"batchStock\": {\n            \"batchNumber\": 2\n        }\n     }]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/fresh-products/purchases/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fresh-products",
+						"purchases",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
