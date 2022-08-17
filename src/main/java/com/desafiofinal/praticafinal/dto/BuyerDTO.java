@@ -32,9 +32,20 @@ public class BuyerDTO {
 
         Fidelity newFidelity = FidelityDTO.convertToEntity(dto.getFidelity());
         return Buyer.builder()
-                //.buyerName(dto.getBuyerName())
+                .buyerName(dto.getBuyerName())
                 .buyerId(dto.getBuyerId())
                 .fidelity(newFidelity)
+                .score(dto.getScore())
+                .build();
+    }
+
+    public static Buyer convertToEntityOnlyId (BuyerDTO dto){
+
+        //Fidelity newFidelity = FidelityDTO.convertToEntity(dto.getFidelity());
+        return Buyer.builder()
+                //.buyerName(dto.getBuyerName())
+                .buyerId(dto.getBuyerId())
+                //.fidelity(newFidelity)
                 //.score(dto.getScore())
                 .build();
     }

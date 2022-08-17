@@ -46,7 +46,7 @@ public class CartDto {
     }
 
     public static Cart convertDtoToCart (CartDto cartDto){
-        Buyer newBuyer = BuyerDTO.convertToEntity(cartDto.getBuyer());
+        Buyer newBuyer = BuyerDTO.convertToEntityOnlyId(cartDto.getBuyer());
         List<Purchase> newPurchase = PurchaseDTO.convertToListEntity(cartDto.getPurchaseList());
 
         return Cart.builder()
@@ -55,8 +55,9 @@ public class CartDto {
                 .date(cartDto.getDate())
                 //.totalPrice(cartDto.getTotalPrice())
                 //.discountedPrice(cartDto.getDiscountedPrice())
-                .orderStatus(cartDto.getOrderStatus())
+                //.orderStatus(cartDto.getOrderStatus())
                 .listPurchase(newPurchase)
                 .build();
     }
+
 }

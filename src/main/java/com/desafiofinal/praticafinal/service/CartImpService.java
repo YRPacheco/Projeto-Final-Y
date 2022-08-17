@@ -42,9 +42,10 @@ public class CartImpService implements ICartService {
     @Override
     public Double createPurchase(Cart cart){
 
-        Fidelity fidelity = verifyFidelity(cart.getBuyer());
+
 
         Buyer foundBuyer = verifyBuyer(cart.getBuyer());
+        Fidelity fidelity = verifyFidelity(foundBuyer);
         foundBuyer.setFidelity(fidelity);
 
         cart.setBuyer(foundBuyer);
